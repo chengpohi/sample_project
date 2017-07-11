@@ -23,14 +23,17 @@ object Settings {
     "org.scalaz" %% "scalaz-core" % "7.3.0-M9",
     "org.scalaz" %% "scalaz-effect" % "7.3.0-M9",
     "org.scalaz" %% "scalaz-concurrent" % "7.3.0-M9",
-    "org.scalaz" %% "scalaz-iteratee" % "7.3.0-M9"
+    "org.scalaz" %% "scalaz-iteratee" % "7.3.0-M9",
+    "org.apache.logging.log4j" % "log4j-1.2-api" % "2.7",
+    "org.apache.logging.log4j" % "log4j-api" % "2.7",
+    "org.apache.logging.log4j" % "log4j-core" % "2.7" % "runtime"
   )
 
 
   val commonSetting = Seq(
     version := "1.0",
     scalaVersion := "2.12.1",
-    scalacOptions ++= Seq("-language:implicitConversions", "-language:higherKinds", "-feature", "-language:postfixOps", "-Xplugin-require:macroparadise"),
+    scalacOptions ++= Seq("-language:implicitConversions", "-language:higherKinds", "-feature", "-language:postfixOps"),
     initialCommands in console := "import scalaz._, Scalaz._",
     libraryDependencies ++= commonDependencies
   )
