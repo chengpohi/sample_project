@@ -9,4 +9,3 @@ scalaVersion := "2.12.1"
 mainClass := Some("HelloWorld")
 
 libraryDependencies ++= commonDependencies ++ akkaDependencies
-

@@ -13,12 +13,16 @@ object CorsSupport {
     respondWithHeaders(
       `Access-Control-Allow-Origin`(allowedOrigin),
       `Access-Control-Allow-Credentials`(true),
-      `Access-Control-Allow-Headers`("Authorization", "Content-Type", "X-Requested-With")
+      `Access-Control-Allow-Headers`("Authorization",
+                                     "Content-Type",
+                                     "X-Requested-With")
     )
   }
 
   private def preflightRequestHandler: Route = options {
-    complete(HttpResponse(StatusCodes.OK).withHeaders(`Access-Control-Allow-Methods`(OPTIONS, POST, PUT, GET, DELETE)))
+    complete(
+      HttpResponse(StatusCodes.OK).withHeaders(
+        `Access-Control-Allow-Methods`(OPTIONS, POST, PUT, GET, DELETE)))
   }
 
   def corsHandler(r: Route): Route = addAccessControlHeaders {

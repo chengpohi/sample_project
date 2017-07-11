@@ -38,7 +38,6 @@ object HelloWorld {
       }
       .result()
 
-
   def bootstrap(): Unit = {
     implicit val system = ActorSystem("sample_project")
     implicit val materializer = ActorMaterializer()
@@ -46,7 +45,8 @@ object HelloWorld {
 
     val route: Route = Routes.routes
 
-    val bindingFuture: Future[Http.ServerBinding] = Http().bindAndHandle(CorsSupport.corsHandler(route),
+    val bindingFuture: Future[Http.ServerBinding] = Http().bindAndHandle(
+      CorsSupport.corsHandler(route),
       Config.BIND_IP,
       Config.LISTEN_PORT)
 

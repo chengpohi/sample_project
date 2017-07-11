@@ -9,7 +9,6 @@ object Settings {
     Resolver.sonatypeRepo("snapshots")
   )
 
-
   lazy val akkaDependencies = Seq(
     "com.typesafe" % "config" % "1.2.1",
     "com.typesafe.akka" %% "akka-slf4j" % "2.4.16",
@@ -29,11 +28,13 @@ object Settings {
     "org.apache.logging.log4j" % "log4j-core" % "2.7" % "runtime"
   )
 
-
   val commonSetting = Seq(
     version := "1.0",
     scalaVersion := "2.12.1",
-    scalacOptions ++= Seq("-language:implicitConversions", "-language:higherKinds", "-feature", "-language:postfixOps"),
+    scalacOptions ++= Seq("-language:implicitConversions",
+                          "-language:higherKinds",
+                          "-feature",
+                          "-language:postfixOps"),
     initialCommands in console := "import scalaz._, Scalaz._",
     libraryDependencies ++= commonDependencies
   )
