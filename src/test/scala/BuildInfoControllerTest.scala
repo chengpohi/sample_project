@@ -1,4 +1,6 @@
 import akka.http.scaladsl.testkit.ScalatestRouteTest
+import org.json4s.native.JsonMethods._
+import org.json4s.{DefaultFormats, _}
 import org.scalatest.{Matchers, WordSpec}
 
 class BuildInfoControllerTest
@@ -6,11 +8,19 @@ class BuildInfoControllerTest
     with Matchers
     with ScalatestRouteTest {
   val buildInfoController = new BuildInfoController {}
-  "BuildInfoController" should {
 
+  implicit val formats = DefaultFormats
+
+  "BuildInfoController" should {
     "get project build infos" in {
       Get() ~> buildInfoController.buildInfo ~> check {
-        responseAs[String] shouldEqual """{"branch":null,"buildSourceJDK":null,"change":null,"buildTargetJDK":null,"buildDate":null,"buildNumber":null}"""
+        parse(responseAs[String]).extract[BuildInfo] shouldEqual BuildInfo(
+          None,
+          None,
+          None,
+          None,
+          None,
+          None)
       }
     }
   }

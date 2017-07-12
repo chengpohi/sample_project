@@ -19,13 +19,15 @@ object Settings {
 
   val commonDependencies = Seq(
     "org.scalatest" %% "scalatest" % "3.0.1" % "test",
+    "com.itv" %% "scalapact-scalatest" % "2.1.3" % "test",
     "org.scalaz" %% "scalaz-core" % "7.3.0-M9",
     "org.scalaz" %% "scalaz-effect" % "7.3.0-M9",
     "org.scalaz" %% "scalaz-concurrent" % "7.3.0-M9",
     "org.scalaz" %% "scalaz-iteratee" % "7.3.0-M9",
     "org.apache.logging.log4j" % "log4j-1.2-api" % "2.7",
     "org.apache.logging.log4j" % "log4j-api" % "2.7",
-    "org.apache.logging.log4j" % "log4j-core" % "2.7" % "runtime"
+    "org.apache.logging.log4j" % "log4j-core" % "2.7" % "runtime",
+    "org.json4s" %% "json4s-native" % "3.5.2"
   )
 
   val commonSetting = Seq(

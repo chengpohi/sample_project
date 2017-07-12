@@ -1,16 +1,6 @@
-import akka.http.scaladsl.common.{
-  EntityStreamingSupport,
-  JsonEntityStreamingSupport
-}
-import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-import spray.json.{DefaultJsonProtocol, NullOptions, RootJsonFormat}
+import org.json4s.{DefaultFormats, Formats, native}
 
-trait JSONSerializer
-    extends SprayJsonSupport
-    with DefaultJsonProtocol
-    with NullOptions {
-  implicit val buildInfoFormat: RootJsonFormat[BuildInfo] = jsonFormat6(
-    BuildInfo)
-  implicit val jsonStreamingSupport: JsonEntityStreamingSupport =
-    EntityStreamingSupport.json()
+trait JSONSerializer extends JSON4SSerializer {
+  implicit val serialization = native.Serialization
+  implicit val formats: Formats = DefaultFormats.preservingEmptyValues
 }
